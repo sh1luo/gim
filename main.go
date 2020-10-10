@@ -9,7 +9,7 @@ import (
 func ServeWs(pool *websocket.Pool, w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 
-	_ = r.ParseForm()
+	_ = r.ParseForm() // 127.0.0.1：8000?user=xxxxx
 	if len(r.Form["username"]) > 0 {
 		fmt.Println(r.Host, " ", r.Form["username"][0])
 	}
