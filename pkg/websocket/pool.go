@@ -23,13 +23,13 @@ func (pool *Pool) Start() {
 		select {
 		case client := <-pool.Register:
 			pool.Clients[client] = true
-			//fmt.Println("当前连接池大小为: ", len(pool.Clients))
+			// fmt.Println("当前连接池大小为: ", len(pool.Clients))
 			for client := range pool.Clients {
-				fmt.Println(client)
+				// fmt.Println(client)
 				_ = client.Conn.WriteJSON(Message{
 					Type:     2,
 					Nickname: "",
-					Body:     fmt.Sprintf("%s%d","New User Joined...Remaining number is ",len(pool.Clients)),
+					Body:     fmt.Sprintf("%s%d", "New User Joined...Remaining number is ", len(pool.Clients)),
 				})
 			}
 			break
@@ -40,7 +40,7 @@ func (pool *Pool) Start() {
 				_ = client.Conn.WriteJSON(Message{
 					Type:     2,
 					Nickname: "",
-					Body:     fmt.Sprintf("%s%d","User Disconnected...Remaining number is ",len(pool.Clients)),
+					Body:     fmt.Sprintf("%s%d", "User Disconnected...Remaining number is ", len(pool.Clients)),
 				})
 			}
 			break
