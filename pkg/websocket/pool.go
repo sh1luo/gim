@@ -40,7 +40,7 @@ func (pool *Pool) Start() {
 				_ = c.Conn.WriteJSON(Message{
 					Type:     2,
 					Nickname: "",
-					Body: fmt.Sprintf("%s%d",
+					Body: fmt.Sprintf("%s%s%s%d",
 						"用户", c.Nickname, "已经退出群聊，剩余人数为： ",
 						len(pool.Clients)),
 				})
