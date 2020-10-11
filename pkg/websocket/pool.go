@@ -44,7 +44,7 @@ func (pool *Pool) Start() {
 					Type:     2,
 					Nickname: "",
 					Body: fmt.Sprintf("%s%s%s%d",
-						"用户", c.Nickname, "已经退出群聊，剩余人数为： ",
+						"用户", client.Nickname, "已经退出群聊，剩余人数为： ",
 						len(pool.Clients)),
 				})
 			}
