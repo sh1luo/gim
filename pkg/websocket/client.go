@@ -1,7 +1,6 @@
 package websocket
 
 import (
-	"fmt"
 	"github.com/gorilla/websocket"
 	jsoniter "github.com/json-iterator/go"
 	"log"
@@ -40,6 +39,6 @@ func (c *Client) Read() {
 			Body:     msg,
 		}
 		c.Pool.Broadcast <- message
-		fmt.Printf("Message Received: %+v\n", message)
+		//fmt.Printf("Message Received: %+v\n", message)
 	}
 }

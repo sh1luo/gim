@@ -1,6 +1,9 @@
 package websocket
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 type Pool struct {
 	Register   chan *Client
@@ -50,7 +53,7 @@ func (pool *Pool) Start() {
 			//fmt.Println("正在给所有人发送消息")
 			for client := range pool.Clients {
 				if err := client.Conn.WriteJSON(message); err != nil {
-					fmt.Println(err)
+					log.Printf("err: %s",err)
 					return
 				}
 			}
