@@ -31,8 +31,6 @@ func ServeWs(pool *websocket.Pool, w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	//fmt.Println("Distributed chat app V0.0.1")
-
 	pool := websocket.NewPool()
 	go pool.Start()
 

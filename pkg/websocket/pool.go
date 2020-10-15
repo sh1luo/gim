@@ -15,7 +15,7 @@ type Pool struct {
 func NewPool() *Pool {
 	return &Pool{
 		Register:   make(chan *Client, 50),
-		UnRegister: make(chan *Client, 20),
+		UnRegister: make(chan *Client, 50),
 		Clients:    make(map[*Client]bool, 50),
 		Broadcast:  make(chan Message, 100),
 	}
@@ -38,7 +38,6 @@ func (pool *Pool) Start() {
 			break
 		case client := <-pool.UnRegister:
 			delete(pool.Clients, client)
-			//fmt.Println("当前连接池大小为: ", len(pool.Clients))
 			for c := range pool.Clients {
 				_ = c.Conn.WriteJSON(Message{
 					Type:     2,
