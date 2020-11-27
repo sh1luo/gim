@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"im_backend/pkg/websocket"
+	"gim/pkg/websocket"
 	"net/http"
 )
 
